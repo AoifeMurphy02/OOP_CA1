@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         ActivityList activityList = new ActivityList();
         activityList = ActivityReader.readFromFile("activity_data_50");
-        activityList.display();
+
 
 
         Scanner kb = new Scanner(System.in);
@@ -34,10 +34,21 @@ public class Main {
                         activityList.display();
                         break;
                     case 2:
-
-
+                        System.out.println("Date (Ascending):");
+                        // Lambda Function
+                        Collections.sort(activityList.activityList, (a1, a2) -> a2.getDate().compareTo(a1.getDate()));
+                        activityList.display();
                         break;
 
+                    case 3:
+                        System.out.println("Date (Descending):");
+                        Collections.sort(activityList.activityList, (a1, a2) -> a1.getDate().compareTo(a2.getDate()));
+                        activityList.display();
+                        break;
+                    case 4:
+                        System.out.println("Activity Duration (Ascending):");
+
+                        break;
 
                 }
             } catch (InputMismatchException e) {
