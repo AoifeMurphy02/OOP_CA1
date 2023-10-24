@@ -2,10 +2,7 @@ package org.example;
 
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -59,15 +56,24 @@ public class Main {
                         break;
                     case 6:
                         System.out.println("Type of Activity:");
-
+                        // Anonymous inner class to sort activities by activity type in asc order
+                        Collections.sort(activityList.activityList, new Comparator<Activity>() {
+                            @Override
+                            public int compare(Activity a1, Activity a2) {
+                                return a2.getActivityType().compareTo(a1.getActivityType());
+                            }
+                        });
+                        activityList.display();
                         break;
                     case 7:
                         System.out.println("Distance (Ascending):");
-
+                        Collections.sort(activityList.activityList, (a1, a2) -> (int) (a1.getDistance()-(a2.getDistance())));
+                        activityList.display();
                         break;
                     case 8:
                         System.out.println("Distance (Descending):");
-
+                        Collections.sort(activityList.activityList, (a1, a2) -> (int) (a2.getDistance()-(a1.getDistance())));
+                        activityList.display();
                         break;
                 }
             } catch (InputMismatchException e) {

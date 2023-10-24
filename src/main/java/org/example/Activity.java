@@ -49,6 +49,14 @@ public class Activity implements Comparable<Activity> {
         return caloriesBurned;
     }
 
+    public ActivityType getActivityType() {
+        return activityType;
+    }
+
+    public void setActivityType(ActivityType activityType) {
+        this.activityType = activityType;
+    }
+
     public Date getDate() {
         return date;
     }
