@@ -11,8 +11,8 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         ActivityList activityList = new ActivityList();
-        activityList = ActivityReader.readFromFile("activity_data_50");
-
+       // activityList = ActivityReader.readFromFile("activity_data_50");
+        activityList = ActivityReader.readFromFile("activity_data_10");
 
 
         Scanner kb = new Scanner(System.in);
@@ -47,9 +47,28 @@ public class Main {
                         break;
                     case 4:
                         System.out.println("Activity Duration (Ascending):");
+                        ActivityDurationAsc ada = new ActivityDurationAsc();
+                        Collections.sort(activityList.activityList, ada);
+                        activityList.display();
+                        break;
+                    case 5:
+                        System.out.println("Activity Duration (Descending):");
+                        ActivityDurationDesc adD = new ActivityDurationDesc();
+                        Collections.sort(activityList.activityList, adD);
+                        activityList.display();
+                        break;
+                    case 6:
+                        System.out.println("Type of Activity:");
 
                         break;
+                    case 7:
+                        System.out.println("Distance (Ascending):");
 
+                        break;
+                    case 8:
+                        System.out.println("Distance (Descending):");
+
+                        break;
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Invalid - Please enter a valid option");

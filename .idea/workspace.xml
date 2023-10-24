@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ede18cb3-5575-430b-934d-7b5e116c257a" name="Changes" comment="OOP CA1 Activity Tracker, reading from a csv file working a sorting by Calories burned(Descending)">
+    <list default="true" id="ede18cb3-5575-430b-934d-7b5e116c257a" name="Changes" comment="Added lambda expression for date asc and desc">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ActivityDurationAsc.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ActivityDurationDesc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ActivityList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ActivityList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,17 +41,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/oop/week3Ex",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/oop/week3Ex&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="Activity" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.Activity" />
@@ -129,7 +130,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698100809488</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added lambda expression for date asc and desc">
+      <created>1698103566569</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1698103566569</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -147,6 +155,7 @@
     <MESSAGE value="OOP CA1 Activity Tracker" />
     <MESSAGE value="OOP CA1 Activity Tracker, reading from a csv file and started on the Activity and ActivityType class" />
     <MESSAGE value="OOP CA1 Activity Tracker, reading from a csv file working a sorting by Calories burned(Descending)" />
-    <option name="LAST_COMMIT_MESSAGE" value="OOP CA1 Activity Tracker, reading from a csv file working a sorting by Calories burned(Descending)" />
+    <MESSAGE value="Added lambda expression for date asc and desc" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added lambda expression for date asc and desc" />
   </component>
 </project>
