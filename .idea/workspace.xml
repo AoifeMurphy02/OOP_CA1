@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ede18cb3-5575-430b-934d-7b5e116c257a" name="Changes" comment="added case for subset of data bases on Activity Type">
+    <list default="true" id="ede18cb3-5575-430b-934d-7b5e116c257a" name="Changes" comment="added case for getting data above a minimum distance">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
     </list>
@@ -170,7 +170,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698242096875</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="added case for getting data above a minimum distance">
+      <created>1698243836426</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1698243836426</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -192,6 +199,7 @@
     <MESSAGE value="added ActvityDuration Asc and Desc" />
     <MESSAGE value="added anonymous inner classes for sorting by Type of Activity" />
     <MESSAGE value="added case for subset of data bases on Activity Type" />
-    <option name="LAST_COMMIT_MESSAGE" value="added case for subset of data bases on Activity Type" />
+    <MESSAGE value="added case for getting data above a minimum distance" />
+    <option name="LAST_COMMIT_MESSAGE" value="added case for getting data above a minimum distance" />
   </component>
 </project>

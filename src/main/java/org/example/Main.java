@@ -8,14 +8,18 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         ActivityList activityList = new ActivityList();
-       // activityList = ActivityReader.readFromFile("activity_data_50");
-        activityList = ActivityReader.readFromFile("activity_data_100");
+        activityList = ActivityReader.readFromFile("activity_data_10");
+       //activityList = ActivityReader.readFromFile("activity_data_50");
+        //activityList = ActivityReader.readFromFile("activity_data_100");
 
 
         Scanner kb = new Scanner(System.in);
         String[] menuOptions = {"0. Exit", "1. Calories burned(Descending)", "2. Date (Ascending) ",
                 "3. Date (Descending)", "4. Activity Duration (Ascending)",
-                "5. Activity Duration (Descending)", "6. Type of Activity", "7. Distance (Ascending)", "8. Distance (Descending)", "9. All Swimming", "10. All Running", "11. All cycling", "12. Above a minimum distance"
+                "5. Activity Duration (Descending)", "6. Type of Activity",
+                "7. Distance (Ascending)", "8. Distance (Descending)",
+                "9. All Swimming", "10. All Running", "11. All cycling",
+                "12. Above a minimum distance", "13. Type of energy expended", "14. Above a minimum duration"
         };
 
         int menuChoice = -1;
@@ -106,10 +110,10 @@ public class Main {
                         cycling.display();
                         break;
                     case 12:
-                        Scanner in = new Scanner(System.in);
+                        // Scanner in = new Scanner(System.in);
                         double minDis;
                         System.out.println("Enter the minimum distance");
-                        minDis = in.nextDouble();
+                        minDis = kb.nextDouble();
                         ActivityList above = new ActivityList();
                         for (Activity activity : activityList.activityList) {
                             if (activity.getDistance() >= minDis) {
@@ -118,8 +122,27 @@ public class Main {
                         }
                         above.display();
                         break;
-                }
 
+                    case 13:
+                        System.out.println("Type of energy expended");
+
+
+                        break;
+
+                    case 14:
+                        // Scanner in = new Scanner(System.in);
+                        double minDur;
+                        System.out.println("Enter the minimum duration");
+                        minDur = kb.nextDouble();
+                        ActivityList aboveDur = new ActivityList();
+                        for (Activity activity : activityList.activityList) {
+                            if (activity.getDuration() >= minDur) {
+                                aboveDur.addActivity(activity);
+                            }
+                        }
+                        aboveDur.display();
+                        break;
+                }
             } catch (InputMismatchException e) {
                 System.out.println("Invalid - Please enter a valid option");
             }
