@@ -15,7 +15,7 @@ public class Main {
         Scanner kb = new Scanner(System.in);
         String[] menuOptions = {"0. Exit", "1. Calories burned(Descending)", "2. Date (Ascending) ",
                 "3. Date (Descending)", "4. Activity Duration (Ascending)",
-                "5. Activity Duration (Descending)", "6. Type of Activity", "7. Distance (Ascending)", "8. Distance (Descending)", "9. All Swimming", "10. All Running", "11. All cycling"
+                "5. Activity Duration (Descending)", "6. Type of Activity", "7. Distance (Ascending)", "8. Distance (Descending)", "9. All Swimming", "10. All Running", "11. All cycling", "12. Above a minimum distance"
         };
 
         int menuChoice = -1;
@@ -67,12 +67,12 @@ public class Main {
                         break;
                     case 7:
                         System.out.println("Distance (Ascending):");
-                        Collections.sort(activityList.activityList, (a1, a2) -> (int) (a1.getDistance()-(a2.getDistance())));
+                        Collections.sort(activityList.activityList, (a1, a2) -> (int) (a1.getDistance() - (a2.getDistance())));
                         activityList.display();
                         break;
                     case 8:
                         System.out.println("Distance (Descending):");
-                        Collections.sort(activityList.activityList, (a1, a2) -> (int) (a2.getDistance()-(a1.getDistance())));
+                        Collections.sort(activityList.activityList, (a1, a2) -> (int) (a2.getDistance() - (a1.getDistance())));
                         activityList.display();
                         break;
                     case 9:
@@ -105,9 +105,21 @@ public class Main {
                         }
                         cycling.display();
                         break;
-
-
+                    case 12:
+                        Scanner in = new Scanner(System.in);
+                        double minDis;
+                        System.out.println("Enter the minimum distance");
+                        minDis = in.nextDouble();
+                        ActivityList above = new ActivityList();
+                        for (Activity activity : activityList.activityList) {
+                            if (activity.getDistance() >= minDis) {
+                                above.addActivity(activity);
+                            }
+                        }
+                        above.display();
+                        break;
                 }
+
             } catch (InputMismatchException e) {
                 System.out.println("Invalid - Please enter a valid option");
             }
