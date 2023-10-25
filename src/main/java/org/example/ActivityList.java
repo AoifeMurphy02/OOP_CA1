@@ -3,13 +3,13 @@ package org.example;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class ActivityList  {
+public class ActivityList extends ArrayList<Activity> {
 
-        ArrayList<Activity> activityList;
+    ArrayList<Activity> activityList;
 
-        public ActivityList() {
-            this.activityList = new ArrayList<>();  // instantiate ArrayList object
-        }
+    public ActivityList() {
+        this.activityList = new ArrayList<>();  // instantiate ArrayList object
+    }
 
 
     public void display() {
@@ -18,12 +18,12 @@ public class ActivityList  {
         }
     }
 
-        // Define a sort method for a League object, which uses Collections.sort()
-        // to sort the ArrayList based on Natural Ordering of LeagueEntry objects.
-        //
-        public void sort() {
-            Collections.sort(activityList);  // will sort by Natural Ordering
-        }
+    // Define a sort method for a League object, which uses Collections.sort()
+    // to sort the ArrayList based on Natural Ordering of LeagueEntry objects.
+    //
+    public void sort() {
+        Collections.sort(activityList);  // will sort by Natural Ordering
+    }
 
 
     public void addActivity(Activity activity) {
@@ -38,5 +38,3 @@ public class ActivityList  {
 
 
 }
-
-

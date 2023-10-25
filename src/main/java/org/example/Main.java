@@ -9,13 +9,13 @@ public class Main {
     public static void main(String[] args) throws IOException {
         ActivityList activityList = new ActivityList();
        // activityList = ActivityReader.readFromFile("activity_data_50");
-        activityList = ActivityReader.readFromFile("activity_data_10");
+        activityList = ActivityReader.readFromFile("activity_data_100");
 
 
         Scanner kb = new Scanner(System.in);
         String[] menuOptions = {"0. Exit", "1. Calories burned(Descending)", "2. Date (Ascending) ",
                 "3. Date (Descending)", "4. Activity Duration (Ascending)",
-                "5. Activity Duration (Descending)", "6. Type of Activity", "7. Distance (Ascending)", "8. Distance (Descending)"
+                "5. Activity Duration (Descending)", "6. Type of Activity", "7. Distance (Ascending)", "8. Distance (Descending)", "9. All Swimming", "10. All Running", "11. All cycling"
         };
 
         int menuChoice = -1;
@@ -75,6 +75,38 @@ public class Main {
                         Collections.sort(activityList.activityList, (a1, a2) -> (int) (a2.getDistance()-(a1.getDistance())));
                         activityList.display();
                         break;
+                    case 9:
+                        System.out.println("All Swimming data");
+                        ActivityList swimming = new ActivityList();
+                        for (Activity activity : activityList.activityList) {
+                            if (activity.getActivityType() == ActivityType.SWIMMING) {
+                                swimming.addActivity(activity);
+                            }
+                        }
+                        swimming.display();
+                        break;
+                    case 10:
+                        System.out.println("All running data");
+                        ActivityList running = new ActivityList();
+                        for (Activity activity : activityList.activityList) {
+                            if (activity.getActivityType() == ActivityType.RUNNING) {
+                                running.addActivity(activity);
+                            }
+                        }
+                        running.display();
+                        break;
+                    case 11:
+                        System.out.println("All cycling data");
+                        ActivityList cycling = new ActivityList();
+                        for (Activity activity : activityList.activityList) {
+                            if (activity.getActivityType() == ActivityType.CYCLING) {
+                                cycling.addActivity(activity);
+                            }
+                        }
+                        cycling.display();
+                        break;
+
+
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Invalid - Please enter a valid option");
