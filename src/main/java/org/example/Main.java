@@ -22,7 +22,8 @@ public class Main {
                 "12. Above a minimum distance", "13. Type of energy expended",
                 "14. Above a minimum duration", "15. View statistics on overall performance based on Average distance Swimming"
                 ,"16. View statistics on overall performance based on Average distance Running"
-                ,"17. View statistics on overall performance based on Average distance Cycling"
+                ,"17. View statistics on overall performance based on Average distance Cycling",
+                "18. Average calories burned"
         };
 
         int menuChoice = -1;
@@ -146,6 +147,10 @@ public class Main {
                         ActivityList cycling = allCycling(activityList);
                         System.out.println("Your Average distance for cycling: "+getAvgDistance(cycling));
                         break;
+                    case 18:
+                        System.out.println("Average Calories Burned");
+                        System.out.println("Your average Calories Burned are:"+getAvgCaloriesBurned(activityList));
+                        break;
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Invalid - Please enter a valid option");
@@ -235,6 +240,16 @@ public class Main {
             count ++;
         }
         return totalDistance/count;
+
+    }
+    public static double getAvgCaloriesBurned(ActivityList list){
+        double totalCaloriesBurned =0;
+        int count =0;
+        for (Activity activity : list.activityList) {
+            totalCaloriesBurned += activity.getCaloriesBurned();
+            count ++;
+        }
+        return totalCaloriesBurned/count;
 
     }
 
