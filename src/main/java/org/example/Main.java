@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         ActivityList activityList = new ActivityList();
         activityList = ActivityReader.readFromFile("activity_data_10");
-       //activityList = ActivityReader.readFromFile("activity_data_50");
+        //activityList = ActivityReader.readFromFile("activity_data_50");
         //activityList = ActivityReader.readFromFile("activity_data_100");
 
 
@@ -19,7 +19,9 @@ public class Main {
                 "5. Activity Duration (Descending)", "6. Type of Activity",
                 "7. Distance (Ascending)", "8. Distance (Descending)",
                 "9. All Swimming", "10. All Running", "11. All cycling",
-                "12. Above a minimum distance", "13. Type of energy expended", "14. Above a minimum duration"
+                "12. Above a minimum distance", "13. Type of energy expended",
+                "14. Above a minimum duration", "15. View statistics on overall performance based on Average distance Swimming"
+
         };
 
         int menuChoice = -1;
@@ -81,33 +83,16 @@ public class Main {
                         break;
                     case 9:
                         System.out.println("All Swimming data");
-                        ActivityList swimming = new ActivityList();
-                        for (Activity activity : activityList.activityList) {
-                            if (activity.getActivityType() == ActivityType.SWIMMING) {
-                                swimming.addActivity(activity);
-                            }
-                        }
-                        swimming.display();
+                        allSwimming(activityList).display();
                         break;
                     case 10:
                         System.out.println("All running data");
-                        ActivityList running = new ActivityList();
-                        for (Activity activity : activityList.activityList) {
-                            if (activity.getActivityType() == ActivityType.RUNNING) {
-                                running.addActivity(activity);
-                            }
-                        }
-                        running.display();
+                        allRunning(activityList);
                         break;
                     case 11:
                         System.out.println("All cycling data");
-                        ActivityList cycling = new ActivityList();
-                        for (Activity activity : activityList.activityList) {
-                            if (activity.getActivityType() == ActivityType.CYCLING) {
-                                cycling.addActivity(activity);
-                            }
-                        }
-                        cycling.display();
+                        allCycling(activityList);
+
                         break;
                     case 12:
                         // Scanner in = new Scanner(System.in);
@@ -142,6 +127,15 @@ public class Main {
                         }
                         aboveDur.display();
                         break;
+                    case 15:
+                        System.out.println("Statistics on overall performance based on Average distance Swimming");
+                       ActivityList swimming = allSwimming(activityList);
+
+                        System.out.println("Your Average distance for swimming: "+getAvgDistance(swimming));
+
+
+                        break;
+
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Invalid - Please enter a valid option");
@@ -159,7 +153,7 @@ public class Main {
      * option</p>
      *
      * @param menuOptions an array of strings of menu options to be displayed
-     * @param menuTitle a string that is the title of the menu
+     * @param menuTitle   a string that is the title of the menu
      */
     public static void displayMenu(String[] menuOptions, String menuTitle) {
         //displays the title of the menu
@@ -194,4 +188,43 @@ public class Main {
         return choice;
     }
 
+    public static ActivityList allCycling(ActivityList activityList) {
+        ActivityList cycling = new ActivityList();
+        for (Activity activity : activityList.activityList) {
+            if (activity.getActivityType() == ActivityType.CYCLING) {
+                cycling.addActivity(activity);
+            }
+        }
+            return cycling;
+
+    }
+    public static ActivityList allRunning(ActivityList activityList){
+        ActivityList running = new ActivityList();
+        for (Activity activity : activityList.activityList) {
+            if (activity.getActivityType() == ActivityType.RUNNING) {
+                running.addActivity(activity);
+            }
+        }
+      return  running;
+    }
+    public static ActivityList allSwimming(ActivityList activityList){
+        ActivityList swimming = new ActivityList();
+        for (Activity activity : activityList.activityList) {
+            if (activity.getActivityType() == ActivityType.SWIMMING) {
+                swimming.addActivity(activity);
+            }
+        }
+         return swimming;
+    }
+
+    public static double getAvgDistance(ActivityList list){
+        double totalDistance =0;
+        int count =0;
+        for (Activity activity : list.activityList) {
+            totalDistance += activity.getDistance();
+            count ++;
+        }
+        return totalDistance/count;
+
+    }
 }
