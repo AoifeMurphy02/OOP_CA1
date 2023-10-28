@@ -21,7 +21,8 @@ public class Main {
                 "9. All Swimming", "10. All Running", "11. All cycling",
                 "12. Above a minimum distance", "13. Type of energy expended",
                 "14. Above a minimum duration", "15. View statistics on overall performance based on Average distance Swimming"
-
+                ,"16. View statistics on overall performance based on Average distance Running"
+                ,"17. View statistics on overall performance based on Average distance Cycling"
         };
 
         int menuChoice = -1;
@@ -87,11 +88,11 @@ public class Main {
                         break;
                     case 10:
                         System.out.println("All running data");
-                        allRunning(activityList);
+                        allRunning(activityList).display();
                         break;
                     case 11:
                         System.out.println("All cycling data");
-                        allCycling(activityList);
+                        allCycling(activityList).display();
 
                         break;
                     case 12:
@@ -115,7 +116,6 @@ public class Main {
                         break;
 
                     case 14:
-                        // Scanner in = new Scanner(System.in);
                         double minDur;
                         System.out.println("Enter the minimum duration");
                         minDur = kb.nextDouble();
@@ -135,7 +135,17 @@ public class Main {
 
 
                         break;
+                    case 16:
+                        System.out.println("Statistics on overall performance based on Average distance Running");
+                        ActivityList running = allRunning(activityList);
 
+                        System.out.println("Your Average distance for running: "+getAvgDistance(running));
+                        break;
+                    case 17:
+                        System.out.println("Statistics on overall performance based on Average distance Cycling");
+                        ActivityList cycling = allCycling(activityList);
+                        System.out.println("Your Average distance for cycling: "+getAvgDistance(cycling));
+                        break;
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Invalid - Please enter a valid option");
@@ -227,4 +237,6 @@ public class Main {
         return totalDistance/count;
 
     }
+
+
 }
