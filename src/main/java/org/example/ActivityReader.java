@@ -13,40 +13,46 @@ import java.util.*;
 // Average Heart Rate
 
     public class ActivityReader {
-
-        public static void main(String[] args) {
-            readFromFile("activity_data_10");
-
-        }
-
+        /**
+         * reads data from a CSV file and creates an ActivityList containing the data
+         * @param fileName the filename of the file we are reading the data from
+         * @return an ActivityList filled with the data read from the file passed to the method
+         */
         public static ActivityList readFromFile(String fileName) {
+            //create an empty  ActivityList to store the activities taken from the csv file
             ActivityList activities = new ActivityList();
 
             try (Scanner sc = new Scanner(new File(fileName + ".csv"))) {
+                // read the header line containing the titles, but we don't use it
                 if (sc.hasNextLine())
-                    sc.nextLine();   // read the header line containing column titles, but don't use it
-
+                    sc.nextLine();
+                //while there is a next line read the next line from the CSV file.
                 while (sc.hasNextLine()) {
                     String line = sc.nextLine();
-                   //System.out.println("Line: " + line); // Debug line
+                    // Split the line into an array of data values using "," as the separator.
                     String[] data = line.split(",");
+                        // Parse the data from the CSV file.
+                        ActivityType type = ActivityType.valueOf(data[0].toUpperCase());//use to uppercase as the ActivityType is saved as an uppercase string
+                        String dateString = data[1];
+                        double duration = Double.parseDouble(data[2]);
+                        double distance = Double.parseDouble(data[3]);
+                        double averageHeartRate = Double.parseDouble(data[4]);
 
-                        ActivityType type = ActivityType.valueOf(data[0].toUpperCase());
-                        String dateString = data[1]; // Adjust the index based on the column order in your CSV file
-                        double duration = Double.parseDouble(data[2]); // Adjust the index
-                        double distance = Double.parseDouble(data[3]); // Adjust the index
-                        double averageHeartRate = Double.parseDouble(data[4]); // Adjust the index
 
 
 
                         try {
+                            // Define the date format
                             SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+                            //parse the date string into a Date object
                             Date date = dateFormat.parse(dateString);
+                            //create a new Activity with the data taken from the CSV file
                             Activity activity = new Activity(type, date, duration, averageHeartRate, distance);
 
                             // Set Intensity and CaloriesBurned after distance and duration are set
                             activity.setIntensity(activity.calcIntensity());
                             activity.setCaloriesBurned(activity.calcCaloriesBurned());
+                            //Add the activity to the ActivityList
                             activities.addActivity(activity);
                         } catch (IllegalArgumentException | ParseException e) {
                             throw new RuntimeException(e);
@@ -58,10 +64,6 @@ import java.util.*;
             }
             return activities;
         }
-
-
-
-
     }
 
 

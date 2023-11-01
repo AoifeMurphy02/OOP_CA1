@@ -7,12 +7,16 @@ import java.util.Collections;
 public class ActivityList extends ArrayList<Activity> {
 
     ArrayList<Activity> activityList;
-
+    /**
+     * Creates an empty ActivityList.
+     */
     public ActivityList() {
         this.activityList = new ArrayList<>();  // instantiate ArrayList object
     }
 
-
+    /**
+     * Display method to display the activities.
+     */
     public void display() {
         String header = String.format("%-15s %-12s %-14s %-14s %-12s %-15s %-12s",
                 "Activity Type", "Date", "Duration", "Avg Heart Rate", "Intensity", "Calories Burned", "Distance");
@@ -34,18 +38,25 @@ public class ActivityList extends ArrayList<Activity> {
         }
     }
 
-    // Define a sort method for a League object, which uses Collections.sort()
-    // to sort the ArrayList based on Natural Ordering of LeagueEntry objects.
-    //
+    /**
+     * sorts activities based on the natural ordering
+     */
     public void sort() {
         Collections.sort(activityList);  // will sort by Natural Ordering
     }
 
-
+    /**
+     * adds an activity to the list
+     * @param activity to be added to the list
+     */
     public void addActivity(Activity activity) {
         activityList.add(activity);
     }
 
+    /**
+     * adds a list of activities to the list
+     * @param activities the list of activities to be added
+     */
     public void addActivities(ArrayList<Activity> activities) {
         activityList.addAll(activities);
     }

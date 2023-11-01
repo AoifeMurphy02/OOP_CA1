@@ -7,16 +7,19 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        ActivityList activityList = new ActivityList();
-        activityList = ActivityReader.readFromFile("activity_data_10");
-        //activityList = ActivityReader.readFromFile("activity_data_50");
-        //activityList = ActivityReader.readFromFile("activity_data_100");
 
+        ActivityList activityList = new ActivityList();
+        //activityList = ActivityReader.readFromFile("activity_data_1000");
+        activityList = ActivityReader.readFromFile("activity_data_10");
+        //activityList = ActivityReader.readFromFile("activity_data_100");
+       activityList.display();
+       activityList.sort();
+       activityList.display();
 
         Scanner kb = new Scanner(System.in);
         String[] menuOptions = {"0. Exit", "1. Calories burned(Descending)", "2. Date (Ascending) ",
                 "3. Date (Descending)", "4. Activity Duration (Ascending)",
-                "5. Activity Duration (Descending)", "6. Type of Activity",
+                "5. Activity Duration (Descending)", "6. Order by Type of Activity",
                 "7. Distance (Ascending)", "8. Distance (Descending)",
                 "9. All Swimming", "10. All Running", "11. All cycling",
                 "12. Above a minimum distance", "13. Type of energy expended",
@@ -111,8 +114,22 @@ public class Main {
                         break;
 
                     case 13:
-                        System.out.println("Type of energy expended");
+                        String intensity;
+                        System.out.println("Enter the Type of energy expended");
+                        ActivityList intensives = new ActivityList();
+                        intensity = kb.next();
+                        for(Activity activity:activityList.activityList){
+                            if(intensity.equals(activity.getIntensity())){
+                                intensives.addActivity(activity);
+                            }
 
+                        }
+                        if(intensives.size() >= 0) {
+                            intensives.display();
+                        }
+                        else{
+                            System.out.println("there is no data with type " + intensity);
+                        }
 
                         break;
 
@@ -203,16 +220,30 @@ public class Main {
         return choice;
     }
 
+    /**
+     * Creates an Activity list of all Activity's with the Activity Type of Cycling from the activityList passed to it
+     * @param activityList
+     * @return an ActivityList of all the Activity's with the Activity Type of Cycling
+     */
     public static ActivityList allCycling(ActivityList activityList) {
+        //create a new ActivityList this will hold all the Activity with the type of cycling
         ActivityList cycling = new ActivityList();
+        //iterate through the activityList
         for (Activity activity : activityList.activityList) {
+            //if its of type Cycling
             if (activity.getActivityType() == ActivityType.CYCLING) {
+                //add it to the new ActivityList
                 cycling.addActivity(activity);
             }
         }
             return cycling;
 
     }
+    /**
+     * Creates an Activity list of all Activity's with the Activity Type of running from the activityList passed to it
+     * @param activityList
+     * @return an ActivityList of all the Activity's with the Activity Type of running
+     */
     public static ActivityList allRunning(ActivityList activityList){
         ActivityList running = new ActivityList();
         for (Activity activity : activityList.activityList) {
@@ -222,6 +253,12 @@ public class Main {
         }
       return  running;
     }
+
+    /**
+     * Creates an Activity list of all Activity's with the Activity Type of swimming from the activityList passed to it
+     * @param activityList
+     * @return an ActivityList of all the Activity's with the Activity Type of swimming
+     */
     public static ActivityList allSwimming(ActivityList activityList){
         ActivityList swimming = new ActivityList();
         for (Activity activity : activityList.activityList) {
@@ -232,6 +269,11 @@ public class Main {
          return swimming;
     }
 
+    /**
+     * gets the average distance for all activity's in an ActivityList passed to it
+     * @param list
+     * @return a double the average distance of the activies in the list
+     */
     public static double getAvgDistance(ActivityList list){
         double totalDistance =0;
         int count =0;
@@ -242,6 +284,12 @@ public class Main {
         return totalDistance/count;
 
     }
+
+    /**
+     * gets the average Calories Burned for all activity's in an ActivityList passed to it
+     * @param list
+     * @return a double the average Calories Burned of the activies in the list
+     */
     public static double getAvgCaloriesBurned(ActivityList list){
         double totalCaloriesBurned =0;
         int count =0;

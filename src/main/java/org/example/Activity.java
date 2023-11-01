@@ -140,6 +140,11 @@ public class Activity implements Comparable<Activity> {
         this.caloriesBurned = caloriesBurned;
     }
 
+    public static void main(String[] args) {
+        Activity a1 = new Activity(ActivityType.SWIMMING,new Date(01/05/2020),120,150,7.37);
+        System.out.println(a1.calcIntensity());
+    }
+
     /**
      * Calc intensity.
      * Calculates the intensity of an activity based on the distance and duration.
@@ -148,26 +153,20 @@ public class Activity implements Comparable<Activity> {
      */
     public String calcIntensity() {
         //get the speed in kilometers per minute
-        String intensity = null;
+        String intensity = "Very Light";
         double km = this.distance / this.duration * 60;
         // Check to see the activity type to determine intensity
-        if (this.activityType == ActivityType.SWIMMING) {
-            if (km < 0.5) {
-                intensity = "Very Light";
-            } else if (km > 0.5 && km <= 1.25) {
-                intensity = "Light";
-            } else if (km > 1.25 && km <= 2) {
-                intensity = "Moderate";
-            } else if (km > 2 && km <= 2.75) {
-                intensity = "Vigorous";
-            } else if (km > 2.75 && km <= 3.5) {
-                intensity = "Very Vigorous";
-            }
+       if (km >= 0.5 && km <= 1.25) {
+            intensity = "Light";
+        } else if (km <= 2) {
+            intensity = "Moderate";
+        } else if (km <= 2.75) {
+            intensity = "Vigorous";
+        } else if (km <= 3.5) {
+            intensity = "Very Vigorous";
         }
         if (this.activityType == ActivityType.RUNNING) {
-            if (km <= 4) {
-                intensity = "Very Light";
-            } else if (km > 4 && km <= 8) {
+             if (km >= 4 && km <= 8) {
                 intensity = "Light";
             } else if (km > 8 && km <= 12) {
                 intensity = "Moderate";
@@ -178,9 +177,7 @@ public class Activity implements Comparable<Activity> {
             }
         }
         if (this.activityType == ActivityType.CYCLING) {
-            if (km <= 8) {
-                intensity = "Very Light";
-            } else if (km > 8 && km <= 16) {
+           if (km >= 8 && km <= 16) {
                 intensity = "Light";
             } else if (km > 16 && km <= 25) {
                 intensity = "Moderate";
