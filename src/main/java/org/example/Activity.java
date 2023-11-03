@@ -6,7 +6,6 @@ import java.util.Date;
 public class Activity implements Comparable<Activity> {
 
     private ActivityType activityType;
-
     private Date date;
     private double duration;
     private double aveHeartRate;
@@ -156,17 +155,23 @@ public class Activity implements Comparable<Activity> {
         String intensity = "Very Light";
         double km = this.distance / this.duration * 60;
         // Check to see the activity type to determine intensity
-       if (km >= 0.5 && km <= 1.25) {
-            intensity = "Light";
-        } else if (km <= 2) {
-            intensity = "Moderate";
-        } else if (km <= 2.75) {
-            intensity = "Vigorous";
-        } else if (km <= 3.5) {
-            intensity = "Very Vigorous";
+        switch (this.activityType) {
+            case SWIMMING:
+                if (true == km >= 0.5 && km <= 1.25) {
+                    intensity = "Light";
+                } else if (true == km <= 2) {
+                    intensity = "Moderate";
+                } else if (true == km <= 2.75) {
+                    intensity = "Vigorous";
+                } else if (true == km <= 3.5) {
+                    intensity = "Very Vigorous";
+                }
+                break;
         }
-        if (this.activityType == ActivityType.RUNNING) {
-             if (km >= 4 && km <= 8) {
+
+                switch (this.activityType) {
+                    case RUNNING:
+            if (km >= 4 && km <= 8) {
                 intensity = "Light";
             } else if (km > 8 && km <= 12) {
                 intensity = "Moderate";
@@ -175,9 +180,10 @@ public class Activity implements Comparable<Activity> {
             } else if (km > 16 && km <= 24) {
                 intensity = "Very Vigorous";
             }
-        }
-        if (this.activityType == ActivityType.CYCLING) {
-           if (km >= 8 && km <= 16) {
+            break;
+        }switch (this.activityType) {
+            case CYCLING:
+            if (km >= 8 && km <= 16) {
                 intensity = "Light";
             } else if (km > 16 && km <= 25) {
                 intensity = "Moderate";
@@ -186,6 +192,7 @@ public class Activity implements Comparable<Activity> {
             } else if (km > 33 && km <= 40) {
                 intensity = "Very Vigorous";
             }
+            break;
         }
         //return the intensity
         return intensity;
@@ -199,18 +206,24 @@ public class Activity implements Comparable<Activity> {
         double calories = 0.0;
         // Check the intensity to determine the calorie burn rate
         if (intensity != null) {
-            if (intensity.equals("Very Light")) {
-                calories = 2;
-            } else if (intensity.equals("Light")) {
-                calories = 5;
-            } else if (intensity.equals("Moderate")) {
-                calories = 7;
-            } else if (intensity.equals("Vigorous")) {
-                calories = 13;
-            } else if (intensity.equals("Very Vigorous")) {
-                calories = 15;
+            switch (intensity) {
+               case "Very Light":
+                    calories = 2;
+                    break;
+                case "Light":
+                    calories = 5;
+                    break;
+                case "Moderate":
+                    calories = 7;
+                case "Vigorous":
+                    calories = 13;
+                    break;
+                case "Very Vigorous":
+                    calories = 15;
+                    break;
+                }
             }
-        }
+
         //get the calories burned by multiplying the calorie burn rate by the duration
         return calories * this.duration;
     }

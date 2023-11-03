@@ -10,11 +10,9 @@ public class Main {
 
         ActivityList activityList = new ActivityList();
         //activityList = ActivityReader.readFromFile("activity_data_1000");
-        activityList = ActivityReader.readFromFile("activity_data_10");
+        activityList = ActivityReader.readFromFile("activity_data_100");
         //activityList = ActivityReader.readFromFile("activity_data_100");
-       activityList.display();
-       activityList.sort();
-       activityList.display();
+
 
         Scanner kb = new Scanner(System.in);
         String[] menuOptions = {"0. Exit", "1. Calories burned(Descending)", "2. Date (Ascending) ",
@@ -43,13 +41,14 @@ public class Main {
                         break;
                     case 2:
                         System.out.println("Date (Ascending):");
-                        // Lambda Function
+                        // Lambda Function sorts by date in ascending order
                         Collections.sort(activityList.activityList, (a1, a2) -> a2.getDate().compareTo(a1.getDate()));
                         activityList.display();
                         break;
 
                     case 3:
                         System.out.println("Date (Descending):");
+                        // Lambda Function sorts by date in descending order
                         Collections.sort(activityList.activityList, (a1, a2) -> a1.getDate().compareTo(a2.getDate()));
                         activityList.display();
                         break;
@@ -100,7 +99,6 @@ public class Main {
 
                         break;
                     case 12:
-                        // Scanner in = new Scanner(System.in);
                         double minDis;
                         System.out.println("Enter the minimum distance");
                         minDis = kb.nextDouble();
@@ -147,11 +145,9 @@ public class Main {
                         break;
                     case 15:
                         System.out.println("Statistics on overall performance based on Average distance Swimming");
-                       ActivityList swimming = allSwimming(activityList);
+                        ActivityList swimming = allSwimming(activityList);
 
                         System.out.println("Your Average distance for swimming: "+getAvgDistance(swimming));
-
-
                         break;
                     case 16:
                         System.out.println("Statistics on overall performance based on Average distance Running");
