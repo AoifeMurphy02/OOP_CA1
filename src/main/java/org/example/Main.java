@@ -46,7 +46,6 @@ public class Main {
                         Collections.sort(activityList.activityList, (a1, a2) -> a2.getDate().compareTo(a1.getDate()));
                         activityList.display();
                         break;
-
                     case 3:
                         System.out.println("Date (Descending):");
                         // Lambda Function sorts by date in descending order
@@ -88,15 +87,15 @@ public class Main {
                         break;
                     case 9:
                         System.out.println("All Swimming data");
-                        allSwimming(activityList).display();
+                        ActivityList.allSwimming(activityList).display();
                         break;
                     case 10:
                         System.out.println("All running data");
-                        allRunning(activityList).display();
+                        ActivityList.allRunning(activityList).display();
                         break;
                     case 11:
                         System.out.println("All cycling data");
-                        allCycling(activityList).display();
+                       ActivityList.allCycling(activityList).display();
 
                         break;
                     case 12:
@@ -145,31 +144,30 @@ public class Main {
                         break;
                     case 15:
                         System.out.println("Statistics on overall performance based on Average distance Swimming");
-                        ActivityList swimming = allSwimming(activityList);
+                        ActivityList swimming = ActivityList.allSwimming(activityList);
 
-                        System.out.println("Your Average distance for swimming: "+getAvgDistance(swimming));
+                        System.out.println("Your Average distance for swimming: "+ActivityList.getAvgDistance(swimming));
                         break;
                     case 16:
                         System.out.println("Statistics on overall performance based on Average distance Running");
-                        ActivityList running = allRunning(activityList);
+                        ActivityList running = ActivityList.allRunning(activityList);
 
-                        System.out.println("Your Average distance for running: "+getAvgDistance(running));
+                        System.out.println("Your Average distance for running: "+ActivityList.getAvgDistance(running));
                         break;
                     case 17:
                         System.out.println("Statistics on overall performance based on Average distance Cycling");
-                        ActivityList cycling = allCycling(activityList);
-                        System.out.println("Your Average distance for cycling: "+getAvgDistance(cycling));
+                        ActivityList cycling = ActivityList.allCycling(activityList);
+                        System.out.println("Your Average distance for cycling: "+ActivityList.getAvgDistance(cycling));
                         break;
                     case 18:
                         System.out.println("Average Calories Burned");
-                        System.out.println("Your average Calories Burned are:"+getAvgCaloriesBurned(activityList));
+                        System.out.println("Your average Calories Burned are:"+ActivityList.getAvgCaloriesBurned(activityList));
                         break;
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Invalid - Please enter a valid option");
             }
         } while (menuChoice != 0);
-
 
     }
 
@@ -215,87 +213,4 @@ public class Main {
         }
         return choice;
     }
-
-    /**
-     * Creates an Activity list of all Activity's with the Activity Type of Cycling from the activityList passed to it
-     * @param activityList
-     * @return an ActivityList of all the Activity's with the Activity Type of Cycling
-     */
-    public static ActivityList allCycling(ActivityList activityList) {
-        //create a new ActivityList this will hold all the Activity with the type of cycling
-        ActivityList cycling = new ActivityList();
-        //iterate through the activityList
-        for (Activity activity : activityList.activityList) {
-            //if its of type Cycling
-            if (activity.getActivityType() == ActivityType.CYCLING) {
-                //add it to the new ActivityList
-                cycling.addActivity(activity);
-            }
-        }
-            return cycling;
-
-    }
-    /**
-     * Creates an Activity list of all Activity's with the Activity Type of running from the activityList passed to it
-     * @param activityList
-     * @return an ActivityList of all the Activity's with the Activity Type of running
-     */
-    public static ActivityList allRunning(ActivityList activityList){
-        ActivityList running = new ActivityList();
-        for (Activity activity : activityList.activityList) {
-            if (activity.getActivityType() == ActivityType.RUNNING) {
-                running.addActivity(activity);
-            }
-        }
-      return  running;
-    }
-
-    /**
-     * Creates an Activity list of all Activity's with the Activity Type of swimming from the activityList passed to it
-     * @param activityList
-     * @return an ActivityList of all the Activity's with the Activity Type of swimming
-     */
-    public static ActivityList allSwimming(ActivityList activityList){
-        ActivityList swimming = new ActivityList();
-        for (Activity activity : activityList.activityList) {
-            if (activity.getActivityType() == ActivityType.SWIMMING) {
-                swimming.addActivity(activity);
-            }
-        }
-         return swimming;
-    }
-
-    /**
-     * gets the average distance for all activity's in an ActivityList passed to it
-     * @param list
-     * @return a double the average distance of the activies in the list
-     */
-    public static double getAvgDistance(ActivityList list){
-        double totalDistance =0;
-        int count =0;
-        for (Activity activity : list.activityList) {
-            totalDistance += activity.getDistance();
-            count ++;
-        }
-        return totalDistance/count;
-
-    }
-
-    /**
-     * gets the average Calories Burned for all activity's in an ActivityList passed to it
-     * @param list
-     * @return a double the average Calories Burned of the activies in the list
-     */
-    public static double getAvgCaloriesBurned(ActivityList list){
-        double totalCaloriesBurned =0;
-        int count =0;
-        for (Activity activity : list.activityList) {
-            totalCaloriesBurned += activity.getCaloriesBurned();
-            count ++;
-        }
-        return totalCaloriesBurned/count;
-
-    }
-
-
 }

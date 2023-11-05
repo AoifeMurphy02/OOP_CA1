@@ -113,11 +113,18 @@ public class Activity implements Comparable<Activity> {
         this.aveHeartRate = aveHeartRate;
     }
 
-
+    /**
+     * gets the intensity
+     * @return intensity
+     */
     public Intensity getIntensity() {
         return intensity;
     }
 
+    /**
+     * sets the Intensity
+     * @param intensity
+     */
     public void setIntensity(Intensity intensity) {
         this.intensity = intensity;
     }
@@ -147,41 +154,44 @@ public class Activity implements Comparable<Activity> {
             case SWIMMING:
                 if ( km >= 0.5 && km <= 1.25) {
                     intensity = Intensity.LIGHT;
-                } else if (km <= 2) {
+                } else if ( km <= 2) {
                     intensity = Intensity.MODERATE;
                 } else if (km <= 2.75) {
                     intensity = Intensity.VIGOROUS;
                 } else if ( km <= 3.5) {
                     intensity = Intensity.VERY_VIGOROUS;
                 }
-                break;
-        }
+                    break;
+                }
 
                 switch (this.activityType) {
                     case RUNNING:
-            if (km >= 4 && km <= 8) {
-                intensity = Intensity.LIGHT;
-            } else if (km > 8 && km <= 12) {
-                intensity = Intensity.MODERATE;
-            } else if (km > 12 && km <= 16) {
-                intensity = Intensity.VIGOROUS;
-            } else if (km > 16 && km <= 24) {
-                intensity = Intensity.VERY_VIGOROUS;
-            }
-            break;
+                        if (km >= 4 && km <= 8) {
+                            intensity = Intensity.LIGHT;
+                        } else if ( km > 8 && km <= 12) {
+                            intensity = Intensity.MODERATE;
+                        } else if ( km > 12 && km <= 16) {
+                            intensity = Intensity.VIGOROUS;
+                        } else if (km > 16 && km <= 24) {
+                            intensity = Intensity.VERY_VIGOROUS;
+                        }
+                        break;
+
         }switch (this.activityType) {
+
             case CYCLING:
-            if (km >= 8 && km <= 16) {
-                intensity = Intensity.LIGHT;
-            } else if (km > 16 && km <= 25) {
-                intensity = Intensity.MODERATE;
-            } else if (km > 25 && km <= 33) {
-                intensity = Intensity.VIGOROUS;
-            } else if (km > 33 && km <= 40) {
-                intensity = Intensity.VERY_VIGOROUS;
-            }
-            break;
-        }
+                if ( km >= 8 && km <= 16) {
+                    intensity = Intensity.LIGHT;
+                } else if (km > 16 && km <= 25) {
+                    intensity = Intensity.MODERATE;
+                } else if ( km > 25 && km <= 33) {
+                    intensity = Intensity.VIGOROUS;
+                } else if ( km > 33 && km <= 40) {
+                    intensity = Intensity.VERY_VIGOROUS;
+                }
+                    break;
+                }
+
         //return the intensity
         return intensity;
     }
