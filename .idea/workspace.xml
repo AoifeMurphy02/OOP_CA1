@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ede18cb3-5575-430b-934d-7b5e116c257a" name="Changes" comment="refactored som methods of the Activity class">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Intensity.java" afterDir="false" />
+    <list default="true" id="ede18cb3-5575-430b-934d-7b5e116c257a" name="Changes" comment="Added an Enum for Intensity and fixed the calcCaloriesBurned method">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Activity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,7 +227,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699027357223</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Added an Enum for Intensity and fixed the calcCaloriesBurned method">
+      <created>1699203223743</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1699203223743</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -258,6 +265,7 @@
     <MESSAGE value="Added javadocs for Activity class" />
     <MESSAGE value="fixed calcIntensity to correctly deal with Very Light when calculated" />
     <MESSAGE value="refactored som methods of the Activity class" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactored som methods of the Activity class" />
+    <MESSAGE value="Added an Enum for Intensity and fixed the calcCaloriesBurned method" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added an Enum for Intensity and fixed the calcCaloriesBurned method" />
   </component>
 </project>

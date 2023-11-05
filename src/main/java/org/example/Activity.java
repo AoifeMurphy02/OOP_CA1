@@ -41,7 +41,6 @@ public class Activity implements Comparable<Activity> {
         }
 
 
-
     /**
      * Gets calories burned.
      * @return the calories burned

@@ -9,9 +9,10 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         ActivityList activityList = new ActivityList();
-        //activityList = ActivityReader.readFromFile("activity_data_1000");
+        //activityList = ActivityReader.readFromFile("activity_data_10");
+        //activityList = ActivityReader.readFromFile("activity_data_50");
         activityList = ActivityReader.readFromFile("activity_data_100");
-        //activityList = ActivityReader.readFromFile("activity_data_100");
+        //activityList = ActivityReader.readFromFile("activity_data_1000");
 
 
         Scanner kb = new Scanner(System.in);
@@ -112,23 +113,22 @@ public class Main {
                         break;
 
                     case 13:
-                        String intensity;
                         System.out.println("Enter the Type of energy expended");
-                        ActivityList intensives = new ActivityList();
-                        intensity = kb.next();
-                        for(Activity activity:activityList.activityList){
-                            if(intensity.equals(activity.getIntensity())){
-                                intensives.addActivity(activity);
+                        try {
+                            Intensity intensityInput = Intensity.valueOf(kb.next().toUpperCase());
+                            ActivityList inten = new ActivityList();
+
+                            for (Activity activity : activityList.activityList) {
+                                // Trim and convert intensity to lowercase for case-insensitive comparison
+                                Intensity activityIntensity = activity.getIntensity();
+                                if (activityIntensity.equals(intensityInput)) {
+                                    inten.addActivity(activity);
+                                }
                             }
-
+                            inten.display();
+                        }catch (IllegalArgumentException e) {
+                            System.out.println("Invalid intensity value. Please enter a valid intensity.");
                         }
-                        if(intensives.size() >= 0) {
-                            intensives.display();
-                        }
-                        else{
-                            System.out.println("there is no data with type " + intensity);
-                        }
-
                         break;
 
                     case 14:
