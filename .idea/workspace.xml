@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ede18cb3-5575-430b-934d-7b5e116c257a" name="Changes" comment="fixed calcIntensity to correctly deal with Very Light when calculated">
+    <list default="true" id="ede18cb3-5575-430b-934d-7b5e116c257a" name="Changes" comment="refactored som methods of the Activity class">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Intensity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Activity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +20,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -220,7 +220,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698875448648</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="refactored som methods of the Activity class">
+      <created>1699027357223</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1699027357223</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -250,6 +257,7 @@
     <MESSAGE value="added an average Calories Burned method" />
     <MESSAGE value="Added javadocs for Activity class" />
     <MESSAGE value="fixed calcIntensity to correctly deal with Very Light when calculated" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed calcIntensity to correctly deal with Very Light when calculated" />
+    <MESSAGE value="refactored som methods of the Activity class" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactored som methods of the Activity class" />
   </component>
 </project>

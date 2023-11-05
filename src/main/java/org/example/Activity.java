@@ -9,7 +9,7 @@ public class Activity implements Comparable<Activity> {
     private Date date;
     private double duration;
     private double aveHeartRate;
-    private String intensity;
+    private Intensity intensity;
     private double caloriesBurned;
     private double distance;
 
@@ -41,13 +41,6 @@ public class Activity implements Comparable<Activity> {
         }
 
 
-    /**
-     * Gets intensity.
-     * @return the intensity
-     */
-    public String getIntensity() {
-        return intensity;
-    }
 
     /**
      * Gets calories burned.
@@ -122,11 +115,11 @@ public class Activity implements Comparable<Activity> {
     }
 
 
-    /**
-     * Sets intensity.
-     * @param intensity the intensity
-     */
-    public void setIntensity(String intensity) {
+    public Intensity getIntensity() {
+        return intensity;
+    }
+
+    public void setIntensity(Intensity intensity) {
         this.intensity = intensity;
     }
 
@@ -139,10 +132,6 @@ public class Activity implements Comparable<Activity> {
         this.caloriesBurned = caloriesBurned;
     }
 
-    public static void main(String[] args) {
-        Activity a1 = new Activity(ActivityType.SWIMMING,new Date(01/05/2020),120,150,7.37);
-        System.out.println(a1.calcIntensity());
-    }
 
     /**
      * Calc intensity.
@@ -150,21 +139,21 @@ public class Activity implements Comparable<Activity> {
      * The intensity is categorized as Very Light, Light, Moderate, Vigorous, or Very Vigorous.
      * @return the intensity as a string or "null" if the activity type is not recognized.
      */
-    public String calcIntensity() {
+    public Intensity calcIntensity() {
         //get the speed in kilometers per minute
-        String intensity = "Very Light";
+       Intensity intensity = Intensity.VERY_LIGHT;
         double km = this.distance / this.duration * 60;
         // Check to see the activity type to determine intensity
         switch (this.activityType) {
             case SWIMMING:
-                if (true == km >= 0.5 && km <= 1.25) {
-                    intensity = "Light";
-                } else if (true == km <= 2) {
-                    intensity = "Moderate";
-                } else if (true == km <= 2.75) {
-                    intensity = "Vigorous";
-                } else if (true == km <= 3.5) {
-                    intensity = "Very Vigorous";
+                if ( km >= 0.5 && km <= 1.25) {
+                    intensity = Intensity.LIGHT;
+                } else if (km <= 2) {
+                    intensity = Intensity.MODERATE;
+                } else if (km <= 2.75) {
+                    intensity = Intensity.VIGOROUS;
+                } else if ( km <= 3.5) {
+                    intensity = Intensity.VERY_VIGOROUS;
                 }
                 break;
         }
@@ -172,25 +161,25 @@ public class Activity implements Comparable<Activity> {
                 switch (this.activityType) {
                     case RUNNING:
             if (km >= 4 && km <= 8) {
-                intensity = "Light";
+                intensity = Intensity.LIGHT;
             } else if (km > 8 && km <= 12) {
-                intensity = "Moderate";
+                intensity = Intensity.MODERATE;
             } else if (km > 12 && km <= 16) {
-                intensity = "Vigorous";
+                intensity = Intensity.VIGOROUS;
             } else if (km > 16 && km <= 24) {
-                intensity = "Very Vigorous";
+                intensity = Intensity.VERY_VIGOROUS;
             }
             break;
         }switch (this.activityType) {
             case CYCLING:
             if (km >= 8 && km <= 16) {
-                intensity = "Light";
+                intensity = Intensity.LIGHT;
             } else if (km > 16 && km <= 25) {
-                intensity = "Moderate";
+                intensity = Intensity.MODERATE;
             } else if (km > 25 && km <= 33) {
-                intensity = "Vigorous";
+                intensity = Intensity.VIGOROUS;
             } else if (km > 33 && km <= 40) {
-                intensity = "Very Vigorous";
+                intensity = Intensity.VERY_VIGOROUS;
             }
             break;
         }
@@ -207,19 +196,69 @@ public class Activity implements Comparable<Activity> {
         // Check the intensity to determine the calorie burn rate
         if (intensity != null) {
             switch (intensity) {
-               case "Very Light":
-                    calories = 2;
+                case VERY_LIGHT:
+                    switch (activityType){
+                        case CYCLING:
+                            calories = 2;
+                            break;
+                        case SWIMMING:
+                            calories = 5;
+                            break;
+                        case RUNNING:
+                            calories = 4.1;
+                            break;
+                    }
                     break;
-                case "Light":
-                    calories = 5;
+                case LIGHT:
+                    switch (activityType){
+                        case CYCLING:
+                            calories = 5;
+                            break;
+                        case SWIMMING:
+                            calories = 6.3;
+                            break;
+                        case RUNNING:
+                            calories = 7.2 ;
+                            break;
+                    }
                     break;
-                case "Moderate":
-                    calories = 7;
-                case "Vigorous":
-                    calories = 13;
+                case MODERATE:
+                    switch (activityType) {
+                        case CYCLING:
+                            calories = 7;
+                            break;
+                        case RUNNING:
+                            calories = 10;
+                            break;
+                        case SWIMMING:
+                            calories = 7.6;
+                            break;
+                    }
+                case VIGOROUS:
+                    switch (activityType) {
+                        case CYCLING:
+                            calories = 13;
+                            break;
+                        case RUNNING:
+                            calories = 15.4;
+                            break;
+                        case SWIMMING:
+                            calories = 8.9;
+                            break;
+                    }
                     break;
-                case "Very Vigorous":
-                    calories = 15;
+                case VERY_VIGOROUS:
+                    switch (activityType) {
+                        case CYCLING:
+                            calories = 15;
+                            break;
+                        case RUNNING:
+                            calories = 20.8;
+                            break;
+                        case SWIMMING:
+                            calories = 10.2;
+                            break;
+                    }
                     break;
                 }
             }
