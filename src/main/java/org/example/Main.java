@@ -7,26 +7,38 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-
         ActivityList activityList = new ActivityList();
+        Scanner kb = new Scanner(System.in);
+        boolean fileFound = false;
+        do {
+            System.out.println("Enter the file name");
+            String file = kb.next();
+
+            try {
+                activityList = ActivityReader.readFromFile(file);
+                fileFound = true;
+            } catch (Exception e) {
+                System.out.println("File not found");
+            }
+        }while (!fileFound);
+
         //activityList = ActivityReader.readFromFile("activity_data_10");
         //activityList = ActivityReader.readFromFile("activity_data_50");
-        activityList = ActivityReader.readFromFile("activity_data_100");
-        //activityList = ActivityReader.readFromFile("activity_data_1000");
+        //activityList = ActivityReader.readFromFile("activity_data_100");
+       // activityList = ActivityReader.readFromFile("activity_data_1000");
 
 
-        Scanner kb = new Scanner(System.in);
-        String[] menuOptions = {"0. Exit", "1. Calories burned(Descending)", "2. Date (Ascending) ",
-                "3. Date (Descending)", "4. Activity Duration (Ascending)",
-                "5. Activity Duration (Descending)", "6. Order by Type of Activity",
+
+        String[] menuOptions = {"0. Exit", "1. Calories burned(Descending)",
+                "2. Date (Ascending) ", "3. Date (Descending)",
+                "4. Activity Duration (Ascending)", "5. Activity Duration (Descending)", "6. Order by Type of Activity",
                 "7. Distance (Ascending)", "8. Distance (Descending)",
                 "9. All Swimming", "10. All Running", "11. All cycling",
                 "12. Above a minimum distance", "13. Type of energy expended",
                 "14. Above a minimum duration", "15. View statistics on overall performance based on Average distance Swimming"
                 ,"16. View statistics on overall performance based on Average distance Running"
                 ,"17. View statistics on overall performance based on Average distance Cycling",
-                "18. Average calories burned"
-        };
+                "18. Average calories burned"};
 
         int menuChoice = -1;
         do {
@@ -173,10 +185,8 @@ public class Main {
 
 
     /**
-     * <b>displayMenu</b>
-     * <p>
      * displays the menu on the console and will ask the user to choose an
-     * option</p>
+     * option
      *
      * @param menuOptions an array of strings of menu options to be displayed
      * @param menuTitle   a string that is the title of the menu
@@ -193,10 +203,8 @@ public class Main {
     }
 
     /**
-     * <b>getMenuChoice</b>
-     * <p>
      * asks the user to enter a menu choice and will returns it if the choice
-     * entered is not valid the user will be asked again</p>
+     * entered is not valid the user will be asked again
      *
      * @param numItems the number of menu items available to choose from
      * @return the menu choice entered by the user
