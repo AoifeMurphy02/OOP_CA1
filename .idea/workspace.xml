@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ede18cb3-5575-430b-934d-7b5e116c257a" name="Changes" comment="moved some methods from main to the ActivityList">
+    <list default="true" id="ede18cb3-5575-430b-934d-7b5e116c257a" name="Changes" comment="added asking the user to enter a file name">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
     </list>
@@ -247,7 +247,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699211431738</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="added asking the user to enter a file name">
+      <created>1699309821333</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1699309821333</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -281,6 +288,7 @@
     <MESSAGE value="Added an Enum for Intensity and fixed the calcCaloriesBurned method" />
     <MESSAGE value="fixed case 13 in the menue as Intensty is no longer a string" />
     <MESSAGE value="moved some methods from main to the ActivityList" />
-    <option name="LAST_COMMIT_MESSAGE" value="moved some methods from main to the ActivityList" />
+    <MESSAGE value="added asking the user to enter a file name" />
+    <option name="LAST_COMMIT_MESSAGE" value="added asking the user to enter a file name" />
   </component>
 </project>
